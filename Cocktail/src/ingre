@@ -1,0 +1,21 @@
+CREATE table "INGRE" (
+    "INGRE_SEQ"  NUMBER NOT NULL,
+    "INGRE_TYPE" VARCHAR2(40) NOT NULL,
+    "INGRE_NAME" VARCHAR2(40) NOT NULL,
+    constraint  "INGRE_PK" primary key ("INGRE_SEQ")
+)
+/
+
+CREATE sequence "INGRE_SEQ" 
+/
+
+CREATE trigger "BI_INGRE"  
+  before insert on "INGRE"              
+  for each row 
+begin  
+  if :NEW."INGRE_SEQ" is null then
+    select "INGRE_SEQ".nextval into :NEW."INGRE_SEQ" from dual;
+  end if;
+end;
+/   
+

@@ -1,0 +1,22 @@
+CREATE table "REPLY" (
+    "REP_SEQ"     NUMBER NOT NULL,
+    "REP_CONTENT" VARCHAR2(4000) NOT NULL,
+    "REP_ID"      VARCHAR2(40) NOT NULL,
+    "REP_REGDATE" DATE NOT NULL,
+    constraint  "REPLY_PK" primary key ("REP_SEQ")
+)
+/
+
+CREATE sequence "REPLY_SEQ" 
+/
+
+CREATE trigger "BI_REPLY"  
+  before insert on "REPLY"              
+  for each row 
+begin  
+  if :NEW."REP_SEQ" is null then
+    select "REPLY_SEQ".nextval into :NEW."REP_SEQ" from dual;
+  end if;
+end;
+/   
+

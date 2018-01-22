@@ -1,0 +1,27 @@
+CREATE table "MEMBER" (
+    "M_SEQ"      NUMBER NOT NULL,
+    "M_NAME"     VARCHAR2(40) NOT NULL,
+    "M_ID"       VARCHAR2(40) NOT NULL,
+    "M_PW"       VARCHAR2(40) NOT NULL,
+    "M_PWCHK"    VARCHAR2(40) NOT NULL,
+    "M_EMAIL"    VARCHAR2(40) NOT NULL,
+    "M_ROLE"     VARCHAR2(10),
+    "M_REGDATE"  DATE NOT NULL,
+    "M_ENABLED"  VARCHAR2(2) NOT NULL,
+    constraint  "MEMBER_PK" primary key ("M_SEQ")
+)
+/
+
+CREATE sequence "MEMBER_SEQ" 
+/
+
+CREATE trigger "BI_MEMBER"  
+  before insert on "MEMBER"              
+  for each row 
+begin  
+  if :NEW."M_SEQ" is null then
+    select "MEMBER_SEQ".nextval into :NEW."M_SEQ" from dual;
+  end if;
+end;
+/   
+

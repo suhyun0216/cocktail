@@ -1,0 +1,33 @@
+CREATE table "COCKTAIL" (
+    "COCK_SEQ"   NUMBER NOT NULL,
+    "COCK_NAME"  VARCHAR2(40) NOT NULL,
+    "BASE"       VARCHAR2(40) NOT NULL,
+    "BASE_AMT"   VARCHAR2(20) NOT NULL,
+    "LEQ"        VARCHAR2(40) NOT NULL,
+    "LEQ_AMT"    VARCHAR2(20) NOT NULL,
+    "DRINK"      VARCHAR2(40) NOT NULL,
+    "DRINK_AMT"  VARCHAR2(20) NOT NULL,
+    "SYRUP"      VARCHAR2(40) NOT NULL,
+    "SYRUP_AMT"  VARCHAR2(20) NOT NULL,
+    "ETC"        VARCHAR2(40) NOT NULL,
+    "ETC_AMT"    VARCHAR2(20) NOT NULL,
+    "COLOR"      VARCHAR2(20) NOT NULL,
+    "TASTE"      VARCHAR2(20) NOT NULL,
+    "ALCHOL"     VARCHAR2(20) NOT NULL,
+    constraint  "COCKTAIL_PK" primary key ("COCK_SEQ")
+)
+/
+
+CREATE sequence "COCKTAIL_SEQ" 
+/
+
+CREATE trigger "BI_COCKTAIL"  
+  before insert on "COCKTAIL"              
+  for each row 
+begin  
+  if :NEW."COCK_SEQ" is null then
+    select "COCKTAIL_SEQ".nextval into :NEW."COCK_SEQ" from dual;
+  end if;
+end;
+/   
+
