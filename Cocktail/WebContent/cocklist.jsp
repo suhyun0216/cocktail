@@ -12,18 +12,35 @@
 .list{
 	position: relative;
 	width: 50%;
-	height : 100%;
 	padding: 10px;
 	border: 1px solid black;
 	border-collapse: collapse;
+	margin: 10px auto;
 	text-align: center;
+	
+}
+.a{
+	background-color: #F7D7ED;
+	border-bottom-color: white;
+	color:#19958B;
+	font-weight: bold;
+	font-size: 25px;
+	}
+th, td{
+	height: 30px;
+	font-size: 15px;
+}
+.b{
+	height: 10px;
 }
 </style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h3>칵테일 목록</h3>
+
 <table border="1" class="list">
+	<tr><th colspan="2" class="a">칵테일 목록</th></tr>
+	<tr><td colspan="2" class="b"></td></tr>
 	<tr>
 		<th>칵테일 이름</th>
 		<th>베이스 종류</th>
@@ -34,6 +51,15 @@
 		<td>${cdto.base}</td>
 	</tr>
 	</c:forEach>
+	<c:choose>
+		<c:when test="${ldto.m_role=='관리자'}">
+			<tr>
+				<td colspan="2" height="40px">
+					<input class="btn btn-success btn-xs" type="button" value="추가" onclick="location.href='MemberController.do?command=insertform'">
+				</td>
+			</tr>
+		</c:when>
+	</c:choose>
 </table>
 <jsp:include page="side.jsp"/>
 </body>

@@ -6,6 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.a{
+	background-color: #F7D7ED;
+	border-bottom-color: white;
+	color:#19958B;
+	font-weight: bold;
+	font-size: 25px;
+	}
+.status{
+	position: relative;
+	width: 30%;
+	padding: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin: 10px auto;
+	text-align: center;
+}	
+	
+</style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -16,7 +35,8 @@
 	<col width="100px">
 	<col width="200px">
 	<col width="400px">
-	<caption>정보 수정하기</caption>
+	<tr><td colspan="2" class="a">정보수정하기</td></tr>
+	<tr><td colspan="2" height="10px"></td></tr>
 	<tr>
 		<th>아이디</th>
 		<td>${ldto.m_id}</td>
@@ -38,9 +58,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2">
-			<input type="submit" value="수정완료">
-			<input type="button" value="뒤로" onclick="location.href='MemberController.do?command=getuser&m_seq=${ldto.m_seq}'">
+		<td colspan="2" height="40px">
+			<input class="btn btn-primary btn-xs" type="submit" value="수정완료">
+			<input class="btn btn-primary btn-xs" type="button" value="뒤로" onclick="location.href='MemberController.do?command=getuser&m_seq=${ldto.m_seq}'">
 		</td>
 	</tr>
 </table>

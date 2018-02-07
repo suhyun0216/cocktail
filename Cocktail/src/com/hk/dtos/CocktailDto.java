@@ -27,6 +27,32 @@ public class CocktailDto {
 	}
 
 
+	
+	public CocktailDto(String cock_name, String base, String base_amt, String leq, String leq_amt, String drink,
+			String drink_amt, String syrup, String syrup_amt, String etc, String etc_amt, String color, String taste,
+			String alchol, String explain, String make) {
+		super();
+		this.cock_name = cock_name;
+		this.base = base;
+		this.base_amt = base_amt;
+		this.leq = leq;
+		this.leq_amt = leq_amt;
+		this.drink = drink;
+		this.drink_amt = drink_amt;
+		this.syrup = syrup;
+		this.syrup_amt = syrup_amt;
+		this.etc = etc;
+		this.etc_amt = etc_amt;
+		this.color = color;
+		this.taste = taste;
+		this.alchol = alchol;
+		this.explain = explain;
+		this.make = make;
+	}
+
+
+
+
 
 
 	public CocktailDto(int cock_seq, String cock_name, String base, String base_amt, String leq, String leq_amt,

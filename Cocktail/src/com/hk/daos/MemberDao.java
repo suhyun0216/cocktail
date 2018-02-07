@@ -66,6 +66,7 @@ public class MemberDao extends SqlMapConfig{
 			}
 			return dto;
 		}
+		
 		//내정보 수정
 		public boolean updateUser(MemberDto mdto) {
 			int count = 0;
@@ -136,7 +137,7 @@ public class MemberDao extends SqlMapConfig{
 				map.put("m_seq", m_seq);
 				map.put("m_role", m_role);
 				map.put("m_enabled", m_enabled);
-				count = sqlSession.update(namespace+"updatemember", map);
+				count = sqlSession.update(namespace+"userstatus", map);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {

@@ -11,38 +11,64 @@
 	img{width: 330px; height:450px;}
 	.detail{
 		width: 80%;
-		height : 100%;
 		border: 1px solid black;
 		border-collapse: collapse;
+		margin: 10px 10px 10px 10px;
+	}
+	h3{
+		text-align: center;
+	}
+	.a{
+		background-color: #F7D7ED;
+		border-bottom-color: white;
+		color:#19958B;
+		font-weight: bold;
+		font-size: 25px;
+	}
+	th{
+		font-size: 15px;
+	}
+	.b{
+		height: 10px;
 	}
 </style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h3>칵테일 목록</h3>
+
 <form action="MemberController.do" method="post">
 <input type="hidden" name="command" value="liked" >
 <input type="hidden" name="cock_seq" value="${cdto.cock_seq}" >
 <input type="hidden" name="liked" value="${cdto.liked}" >
-<table border="1" class="detail">
-<col width="330px">
-<col width="200px">
-<col width="200px">
+<table border="1" class="detail" >
+<col width="320px">
+<tr><td colspan="3" class="a">${cdto.cock_name}</td></tr>
+<tr><td colspan="3" class="b"></td></tr>
 <tr>
-	<th>${cdto.cock_name}</th>
+	<th rowspan="4"><img alt="칵테일" src="img/${cdto.cock_seq}.jpg"/></th>
 	<th>상세설명</th>
 	<th>제조법</th>
 </tr>
-<tr>
-	<td rowspan="3"><img alt="칵테일" src="img/${cdto.cock_seq}.jpg"/></td>
+<tr height="180px">
+	
 	<td >${cdto.explain}</td>
-	<td rowspan="2">${cdto.make}</td>
+	<td >${cdto.make}</td>
 </tr>
 <tr>
-	<th >재료</th>
+	<th>재료</th>
+	<td rowspan="3">
+		<input class="btn btn-warning" type="submit" value="맛있어요+${cdto.liked}">
+		<input class="btn btn-success btn-xs" type="button" value="목록으로" onclick="location.href = 'MemberController.do?command=cocklist'">
+		<c:choose>
+			<c:when test="${ldto.m_role=='관리자' }">
+				<input class="btn btn-primary btn-xs" type="button" value="수정" onclick="location.href='MemberController.do?command=updateform&cock_seq=${cdto.cock_seq}'">
+				<input class="btn btn-primary btn-xs" type="button" value="삭제" onclick ="location.href='MemberController.do?command=delcock&cock_seq=${cdto.cock_seq}'">
+			</c:when>
+		</c:choose>
+	</td>
 </tr>
 <tr>
-	<td rowspan="2">
+	<td>
 		<c:choose>
 			<c:when test="${cdto.base!='없음'}">
 				${cdto.base}:${cdto.base_amt}
@@ -90,13 +116,11 @@
 		<br>맛 : ${cdto.taste}
 		<br>도수 : ${cdto.alchol}
 	</td>
-	<td>
-		<input type="submit" value="맛있어요+${cdto.liked}">
-		<input type="button" value="목록으로" onclick="location.href = 'MemberController.do?command=cocklist'">
-	</td>
+
 </tr>
 </table>
 </form>
+<jsp:include page="replyboard.jsp"/>
 <jsp:include page="side.jsp"/>
 </body>
 </html>

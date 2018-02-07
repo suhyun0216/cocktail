@@ -8,18 +8,35 @@ public class ReplyDto {
 	private String rep_content;
 	private String rep_id;
 	private Date rep_regdate;
+	private int rep_cock_seq;
 	
-	 public ReplyDto() {
+	public ReplyDto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
 
-	public ReplyDto(int rep_seq, String rep_content, String rep_id, Date rep_regdate) {
+	public ReplyDto(String rep_content, String rep_id, int rep_cock_seq) {
+		super();
+		this.rep_content = rep_content;
+		this.rep_id = rep_id;
+		this.rep_cock_seq = rep_cock_seq;
+	}
+
+
+
+	public ReplyDto(int rep_seq, String rep_content, String rep_id, Date rep_regdate, int rep_cock_seq) {
 		super();
 		this.rep_seq = rep_seq;
 		this.rep_content = rep_content;
 		this.rep_id = rep_id;
 		this.rep_regdate = rep_regdate;
+		this.rep_cock_seq = rep_cock_seq;
 	}
+
+
+
 
 	public int getRep_seq() {
 		return rep_seq;
@@ -53,11 +70,20 @@ public class ReplyDto {
 		this.rep_regdate = rep_regdate;
 	}
 
+	public int getRep_cock_seq() {
+		return rep_cock_seq;
+	}
+
+	public void setRep_cock_seq(int rep_cock_seq) {
+		this.rep_cock_seq = rep_cock_seq;
+	}
+
 	@Override
 	public String toString() {
 		return "ReplyDto [rep_seq=" + rep_seq + ", rep_content=" + rep_content + ", rep_id=" + rep_id + ", rep_regdate="
-				+ rep_regdate + "]";
+				+ rep_regdate + ", rep_cock_seq=" + rep_cock_seq + "]";
 	}
-	 
+	
+
 	 
 }
